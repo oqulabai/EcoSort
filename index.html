@@ -96,7 +96,7 @@ html[data-theme="light"] .ico-moon,html[data-theme="dark"] .ico-sun{display:none
 .dir b{font-size:.92rem;display:block;margin-bottom:.15rem}
 .dir b em{font-style:normal;color:var(--accent);margin-right:.4rem}
 .dir span{font-size:.82rem;color:var(--muted)}
-.dirs{grid-template-columns:repeat(auto-fill,minmax(15rem,1fr))}
+.dirs{grid-template-columns:1fr}@media(min-width:560px){.dirs{grid-template-columns:repeat(2,1fr)}}@media(min-width:1240px){.dirs{grid-template-columns:repeat(3,1fr)}}
 .dir img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:.7rem;margin-bottom:.6rem;background:var(--card)}
 .dir b .badge{font-size:.7rem}
 .chk{list-style:none;margin:.45rem 0 0;padding:0}
@@ -206,6 +206,43 @@ tfoot td{font-weight:800;font-size:.85rem;background:var(--card2);border-bottom:
 .dthumbs button.on{border-color:var(--accent)}
 .dthumbs button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .dthumbs img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* ===== БАСТЫ БЕТ: «Сұрыптау станциясы» ===== */
+:root{--org:#3fae5b;--wat:#2aa6d6;--pap:#d9a441;--mix:#7d8b93;--money:#e0785a;--serif:Georgia,"Iowan Old Style","Palatino Linotype",serif}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55;background-image:radial-gradient(circle,var(--border) 1px,transparent 1.4px);background-size:22px 22px}
+h1{font-family:var(--serif);letter-spacing:-.02em}
+.hero{display:grid;gap:1.3rem;align-items:center;padding:1.3rem 1.2rem;margin-bottom:1rem;border-radius:1.5rem .6rem 1.5rem .6rem;background:var(--card);border:1px solid var(--border);position:relative;overflow:hidden}
+.hero::after{content:"\267B";position:absolute;right:-1rem;top:-2.4rem;font-size:10rem;line-height:1;color:var(--accent);opacity:.08;transform:rotate(14deg);pointer-events:none}
+.hero h2{font-family:var(--serif);font-size:clamp(1.8rem,7vw,2.7rem);line-height:1.05;margin:0 0 .6rem;letter-spacing:-.02em}
+.hero p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.55;max-width:28rem}
+.bins{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;align-items:end;position:relative;z-index:1}
+.bin{--c:var(--org);display:flex;flex-direction:column;align-items:center;text-align:center;gap:.4rem}
+.bin.w{--c:var(--wat)}.bin.p{--c:var(--pap)}.bin.m{--c:var(--mix)}
+.bin .lid{position:relative;width:114%;height:.5rem;border-radius:.3rem;background:var(--c);filter:brightness(.82)}
+.bin .lid::before{content:"";position:absolute;left:50%;top:-.32rem;width:34%;height:.4rem;transform:translateX(-50%);border-radius:.3rem .3rem 0 0;background:inherit}
+.bin .body{position:relative;width:100%;height:6.8rem;margin-top:-.4rem;clip-path:polygon(0 0,100% 0,89% 100%,11% 100%);background:var(--card2);overflow:hidden}
+.bin .fill{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(180deg,var(--c),color-mix(in srgb,var(--c) 68%,#000));transition:height 1.5s var(--ease)}
+.bin .pct{position:absolute;inset:0;display:grid;place-items:center;font:800 1.2rem var(--serif);color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.6);font-variant-numeric:tabular-nums}
+.bin b{font-size:.8rem;line-height:1.2}
+.bin small{font-size:.68rem;color:var(--muted);line-height:1.25}
+.sum-card{position:relative;overflow:hidden;text-align:left;padding:.9rem 1rem .9rem 1.2rem;border-radius:.5rem 1.1rem 1.1rem .5rem}
+.sum-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:.38rem;background:var(--c)}
+.summary>:nth-child(1){--c:var(--org)}.summary>:nth-child(2){--c:var(--wat)}.summary>:nth-child(3){--c:var(--pap)}.summary>:nth-child(4){--c:var(--money)}
+html[data-theme] .summary>.sum-card:first-child{background:var(--card);border-color:var(--border);color:var(--text)}
+html[data-theme] .summary>.sum-card:first-child .label,html[data-theme] .summary>.sum-card:first-child .val small{color:var(--muted)}
+.val{font-family:var(--serif);font-size:1.75rem}
+#p-home>.card{--c:var(--accent);border-left:.38rem solid var(--c);border-radius:.5rem 1.4rem 1.4rem .5rem}
+#p-home>:nth-child(4){--c:var(--org)}#p-home>:nth-child(5){--c:var(--wat)}#p-home>:nth-child(6){--c:var(--pap)}#p-home>:nth-child(7){--c:var(--mix)}
+#p-home .card h2{font-family:var(--serif);font-size:1.15rem}
+#p-home .f{background:transparent;border:1px dashed var(--c);border-radius:.4rem}
+#p-home .big{font-family:var(--serif);font-size:2.3rem}
+#p-home .bar{height:.8rem;border-radius:.2rem;background:repeating-linear-gradient(90deg,var(--card2) 0 .6rem,transparent 0 .7rem);overflow:hidden}
+#p-home .bar i{border-radius:0;background:var(--c);-webkit-mask:repeating-linear-gradient(90deg,#000 0 .6rem,transparent 0 .7rem);mask:repeating-linear-gradient(90deg,#000 0 .6rem,transparent 0 .7rem)}
+#p-home .bar.amb i{background:var(--mix)}
+#p-home .col i{border-radius:.2rem .2rem 0 0;background:repeating-linear-gradient(0deg,var(--pap) 0 6px,transparent 6px 8px)}
+.slogan{font-family:var(--serif);font-size:1.3rem}
+@media(min-width:900px){.hero{grid-template-columns:1fr 1.2fr;padding:2rem 2.2rem;gap:2rem}.bin .body{height:9rem}.bin .pct{font-size:1.45rem}#p-home>.hero{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){.bin .fill{transition:none}}
 </style>
 </head>
 <body>
@@ -221,6 +258,15 @@ tfoot td{font-weight:800;font-size:.85rem;background:var(--card2);border-bottom:
 
 <!-- БАСТЫ -->
 <div class="page on" id="p-home">
+  <section class="hero" aria-label="Жалпы көрсеткіштер">
+    <div><h2>Қоқыс емес — ресурс</h2><p>Мектептегі әр килограмм қалдық есепте: компостқа, өсімдік суаруға және макулатура акциясына айналады.</p></div>
+    <div class="bins">
+      <div class="bin"><div class="lid"></div><div class="body"><i class="fill" id="fOrg"></i><span class="pct" id="pOrg">0%</span></div><b>Органика</b><small>компост шығымы</small></div>
+      <div class="bin w"><div class="lid"></div><div class="body"><i class="fill" id="fWat"></i><span class="pct" id="pWat">0%</span></div><b>Су</b><small>қайта пайдаланылды</small></div>
+      <div class="bin p"><div class="lid"></div><div class="body"><i class="fill" id="fPap"></i><span class="pct" id="pPap">0%</span></div><b>Қағаз</b><small>қалдықтағы үлесі</small></div>
+      <div class="bin m"><div class="lid"></div><div class="body"><i class="fill" id="fMix"></i><span class="pct" id="pMix">—</span></div><b>Аралас қоқыс</b><small>сұрыпталмай қалды</small></div>
+    </div>
+  </section>
   <div class="summary">
     <div class="sum-card"><div class="label">Органикалық қалдық</div><div class="val"><span id="sOrg">0</span> <small>кг</small></div></div>
     <div class="sum-card"><div class="label">Жуу суы</div><div class="val"><span id="sWat">0</span> <small>литр</small></div></div>
@@ -570,6 +616,17 @@ var alts=[main.alt,'3D-принтер медальді басып жатыр','3
  main.src=b.querySelector('img').src;main.alt=alts[i];main.style.objectFit=b.dataset.fit;main.style.objectPosition=b.dataset.pos;
  main.style.background=b.dataset.fit==='contain'?'#ece9e4':'';
  [].forEach.call(box.children,function(x){x.classList.toggle('on',x===b)});})});
+})();
+</script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+function n(id){var v=parseFloat((($(id)||{}).textContent||'').replace(/\s/g,'').replace(',','.'));return isFinite(v)?v:0}
+function put(f,p,v,t){v=Math.max(0,Math.min(100,v));$(f).style.height=v+'%';$(p).textContent=t===undefined?Math.round(v)+'%':t}
+function upd(){var m1=n('eM1'),ps=m1>0?n('sPap')/m1*100:0,have=$('eR').textContent.indexOf('—')<0;
+ put('fOrg','pOrg',n('rK'));put('fWat','pWat',n('rE'));put('fPap','pPap',ps);put('fMix','pMix',have?n('eR'):0,have?undefined:'—')}
+if(window.MutationObserver){var mo=new MutationObserver(upd);['rK','rE','eM1','sPap','eR'].forEach(function(i){mo.observe($(i),{childList:true,characterData:true,subtree:true})})}
+requestAnimationFrame(function(){requestAnimationFrame(upd)});
 })();
 </script>
 </body></html>
