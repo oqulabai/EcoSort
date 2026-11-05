@@ -58,7 +58,18 @@ input:focus{border-color:var(--accent)}
 .del:hover{color:var(--red)}
 .grid2{display:grid;gap:.6rem}
 .row{display:flex;gap:.6rem;flex-wrap:wrap}.row>*{flex:1;min-width:9rem}
-.setf{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.7rem;font-size:.8rem;font-weight:600;color:var(--muted)}
+.setf{display:flex;flex-direction:column;gap:.3rem;margin-bottom:1.05rem}
+.setf label{font-size:.84rem;font-weight:700;color:var(--text)}
+.setf small{font-size:.76rem;line-height:1.4;color:var(--muted)}
+.inp{position:relative}.inp input{padding-right:3.6rem}
+.inp span{position:absolute;right:.9rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.85rem;font-weight:600;pointer-events:none}
+.card .set-lead{margin:.1rem 0 1.15rem;font-size:.84rem;line-height:1.45}
+.btn-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1rem}
+.btn-grid .btn{width:100%;padding:.8rem .4rem;white-space:nowrap;font-size:.88rem}
+.set-danger{border-color:rgba(255,93,115,.35)}
+.danger-row{display:flex;align-items:center;justify-content:space-between;gap:.8rem 1rem;flex-wrap:wrap;padding:.85rem 0;border-top:1px solid var(--border)}
+.danger-row>div{flex:1 1 14rem}.danger-row b{display:block;font-size:.92rem;margin-bottom:.1rem}
+.danger-row span{font-size:.8rem;color:var(--muted)}.danger-row .btn{flex:none;min-width:9.5rem}
 .bottom-nav{position:fixed;left:.75rem;right:.75rem;bottom:calc(.7rem + env(safe-area-inset-bottom));max-width:34rem;margin:0 auto;z-index:50;display:flex;gap:.2rem;padding:.4rem;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.03));-webkit-backdrop-filter:blur(22px) saturate(1.7);backdrop-filter:blur(22px) saturate(1.7);box-shadow:0 12px 32px rgba(0,0,0,.35)}
 html[data-theme="light"] .bottom-nav{background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(236,248,243,.6));border-color:#fff;box-shadow:0 12px 32px rgba(15,40,35,.15)}
 .nav-btn{flex:1;border:0;background:none;color:var(--muted);font:inherit;font-size:.7rem;font-weight:500;display:flex;flex-direction:column;align-items:center;gap:.1rem;padding:.5rem 0;min-height:3.5rem;border-radius:999px;cursor:pointer;transition:background .3s,color .3s,transform .22s var(--ease)}
@@ -147,6 +158,8 @@ tfoot td{font-weight:800;font-size:.85rem;background:var(--card2);border-bottom:
  .summary{grid-template-columns:repeat(4,1fr);margin-bottom:0}
  #p-home.on,#p-info.on,#p-set.on{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;align-items:start}
  #p-home .card,#p-info .card,#p-set .card{margin-bottom:0}
+ #p-set.on{align-items:stretch}
+ #p-set>.set-danger{grid-column:1/-1}
  #p-home>.summary,#p-home>.warn,#p-home>.slogan,#p-home>.wide,#p-info>.slogan,#p-info>.wide{grid-column:1/-1}
  #p-home>.warn{margin:0}
  .ov{align-items:center;justify-content:center}
@@ -177,6 +190,12 @@ tfoot td{font-weight:800;font-size:.85rem;background:var(--card2);border-bottom:
 .gal button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .gal button:first-child{grid-column:1/-1;aspect-ratio:16/10}
 @media(min-width:640px){.gal button:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}}
+.gal-main{grid-column:1/-1;display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.gal-main button:first-child{width:100%}
+@media(min-width:640px){.gal-main{grid-column:span 2;grid-row:span 2}.gal-main button:first-child{flex:1 1 0;min-height:0}}
+.gal-link{align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1rem;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:700;font-size:.9rem;text-decoration:none;transition:transform .22s var(--ease),filter .2s}
+.gal-link:hover{filter:brightness(1.1)}.gal-link:active{transform:scale(.96)}
+.gal-link:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .gal img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
 .gal button:hover img{transform:scale(1.04)}
 .lb{padding:3.6rem .5rem;touch-action:pan-y}
@@ -387,7 +406,7 @@ html[data-theme] .summary>.sum-card:first-child .label,html[data-theme] .summary
 <div class="page" id="p-video">
   <div class="gal-h" style="margin-top:0">📸 Жұмыс барысынан фотолар</div>
 <script>function gf(i){var e=["jpg","jpeg","png","webp"],k=+(i.dataset.i||0)+1;i.dataset.i=k;if(k<e.length){i.src=i.src.replace(/\.[a-z]+$/,"."+e[k])}else{i.onerror=null;i.parentNode.style.display="none"}}</script>
-  <div class="gal"><button type="button" aria-label="Фото 1"><img src="images/work1.jpg" alt="Жұмыс барысынан фото 1" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 2"><img src="images/work2.jpg" alt="Жұмыс барысынан фото 2" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 3"><img src="images/work3.jpg" alt="Жұмыс барысынан фото 3" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 4"><img src="images/work4.jpg" alt="Жұмыс барысынан фото 4" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 5"><img src="images/work5.jpg" alt="Жұмыс барысынан фото 5" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 6"><img src="images/work6.jpg" alt="Жұмыс барысынан фото 6" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 7"><img src="images/work7.jpg" alt="Жұмыс барысынан фото 7" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 8"><img src="images/work8.jpg" alt="Жұмыс барысынан фото 8" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 9"><img src="images/work9.jpg" alt="Жұмыс барысынан фото 9" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 10"><img src="images/work10.jpg" alt="Жұмыс барысынан фото 10" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 11"><img src="images/work11.jpg" alt="Жұмыс барысынан фото 11" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 12"><img src="images/work12.jpg" alt="Жұмыс барысынан фото 12" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 13"><img src="images/work13.jpg" alt="Жұмыс барысынан фото 13" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 14"><img src="images/work14.jpg" alt="Жұмыс барысынан фото 14" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 15"><img src="images/work15.jpg" alt="Жұмыс барысынан фото 15" loading="lazy" onerror="gf(this)"><button type="button" aria-label="Фото 16"><img src="images/work16.jpg" alt="Жұмыс барысынан фото 16" loading="lazy" onerror="gf(this)"></button></button><button type="button" aria-label="Фото 17"><img src="images/work17.jpg" alt="Жұмыс барысынан фото 17" loading="lazy" onerror="gf(this)"></button></button></div>
+  <div class="gal"><div class="gal-main"><button type="button" aria-label="Фото 1"><img src="images/work1.jpg" alt="Жұмыс барысынан фото 1" loading="lazy" onerror="gf(this)"></button><a class="gal-link" href="https://chatgpt.com/s/m_6aeb749d9fc4819181d492a832a19a65" target="_blank" rel="noopener noreferrer">🔗 ChatGPT сілтемесі</a></div><button type="button" aria-label="Фото 2"><img src="images/work2.jpg" alt="Жұмыс барысынан фото 2" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 3"><img src="images/work3.jpg" alt="Жұмыс барысынан фото 3" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 4"><img src="images/work4.jpg" alt="Жұмыс барысынан фото 4" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 5"><img src="images/work5.jpg" alt="Жұмыс барысынан фото 5" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 6"><img src="images/work6.jpg" alt="Жұмыс барысынан фото 6" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 7"><img src="images/work7.jpg" alt="Жұмыс барысынан фото 7" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 8"><img src="images/work8.jpg" alt="Жұмыс барысынан фото 8" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 9"><img src="images/work9.jpg" alt="Жұмыс барысынан фото 9" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 10"><img src="images/work10.jpg" alt="Жұмыс барысынан фото 10" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 11"><img src="images/work11.jpg" alt="Жұмыс барысынан фото 11" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 12"><img src="images/work12.jpg" alt="Жұмыс барысынан фото 12" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 13"><img src="images/work13.jpg" alt="Жұмыс барысынан фото 13" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 14"><img src="images/work14.jpg" alt="Жұмыс барысынан фото 14" loading="lazy" onerror="gf(this)"></button><button type="button" aria-label="Фото 15"><img src="images/work15.jpg" alt="Жұмыс барысынан фото 15" loading="lazy" onerror="gf(this)"><button type="button" aria-label="Фото 16"><img src="images/work16.jpg" alt="Жұмыс барысынан фото 16" loading="lazy" onerror="gf(this)"></button></button><button type="button" aria-label="Фото 17"><img src="images/work17.jpg" alt="Жұмыс барысынан фото 17" loading="lazy" onerror="gf(this)"></button></button></div>
   <div class="gal-h">🎬 Бейнелер мен хабарландырулар</div>
   <div class="vids">
     <div class="card vid"><img src="images/photo1.jpg" alt="Макулатура жинау акциясы: хабарландыру" loading="lazy" onerror="var e=['png','jpeg','webp'],i=+(this.dataset.i||0);if(i<e.length){this.dataset.i=i+1;this.src='images/photo1.'+e[i]}"><h3>📢 Хабарландыру: макулатура жинау акциясы</h3><p>Мектебімізде «EcoLife» волонтёрлық жобасы аясында 1–11 сынып оқушылары арасында ♻️ «Макулатура жинау жобасы: Таза мектеп – қайырымды қоғам» акциясы ұйымдастырылады.</p><p>🌱 Акцияның мақсаты — қоршаған ортаны қорғау, қағаз қалдықтарын қайта өңдеуге үлес қосу және оқушылар арасында экологиялық мәдениетті қалыптастыру.</p><p>💚 Жиналған қаражат «Мектепке жол» қайырымдылық акциясын өткізуге жұмсалады.</p><p>📅 Акция мерзімі: 24.04 – 24.05.2026 ж.</p><p>Баршаңызды игі іске белсене қатысуға шақырамыз! Табиғатты аялау – әрқайсымыздың ортақ міндетіміз! 🌍</p></div>
@@ -403,25 +422,37 @@ html[data-theme] .summary>.sum-card:first-child .label,html[data-theme] .summary
 
 <!-- БАПТАУЛАР -->
 <div class="page" id="p-set">
-  <div class="card"><h2>⚙ Параметрлер</h2>
-    <label class="setf">1 кг қағаздың есептік бағасы B (тг)<input type="number" min="0" step="0.5" inputmode="decimal" id="price"></label>
-    <label class="setf">Автоматты компост коэффициенті (%)<input type="number" min="0" max="100" inputmode="decimal" id="coef"></label>
-    <label class="setf">Автоматты су қайта пайдалану үлесі (%)<input type="number" min="0" max="100" inputmode="decimal" id="wcoef"></label>
-    <label class="setf">Қатысушылар (оқушылар) саны N<input type="number" min="0" step="1" inputmode="numeric" id="nn"></label>
+  <div class="card set-card"><h2>⚙ Параметрлер</h2>
+    <p class="note set-lead">Есептеулерде қолданылатын мәндер. Өзгертсеңіз, нәтижелер бірден жаңарады.</p>
+    <div class="setf"><label for="price">1 кг қағаздың есептік бағасы, B</label>
+      <div class="inp"><input type="number" min="0" step="0.5" inputmode="decimal" id="price"><span>тг</span></div>
+      <small>Макулатура сомасы: S = M × B.</small></div>
+    <div class="setf"><label for="coef">Автоматты компост коэффициенті</label>
+      <div class="inp"><input type="number" min="0" max="100" inputmode="decimal" id="coef"><span>%</span></div>
+      <small>Күнделікте «Компост» бос болса, органикалық қалдықтан осы пайыз алынады.</small></div>
+    <div class="setf"><label for="wcoef">Автоматты су қайта пайдалану үлесі</label>
+      <div class="inp"><input type="number" min="0" max="100" inputmode="decimal" id="wcoef"><span>%</span></div>
+      <small>«Қайта пайд. су» бос болса, жуу суының осы үлесі есептеледі.</small></div>
+    <div class="setf"><label for="nn">Қатысушылар (оқушылар) саны, N</label>
+      <div class="inp"><input type="number" min="0" step="1" inputmode="numeric" id="nn"><span>адам</span></div>
+      <small>Бір адамға шаққанда: C = S / N.</small></div>
   </div>
-  <div class="card"><h2>💾 Деректер</h2>
-    <div class="row">
+  <div class="card set-card"><h2>💾 Деректер</h2>
+    <p class="note set-lead">Күнделік пен параметрлерді файлға сақтау, басқа құрылғыға көшіру немесе басып шығару.</p>
+    <div class="btn-grid">
       <button class="btn" id="expXls">📊 Excel (.xls)</button>
+      <button class="btn alt" id="printBtn">🖨 Басып шығару</button>
       <button class="btn alt" id="expJson">🧾 JSON экспорт</button>
       <button class="btn alt" id="impBtn">📥 JSON импорт</button>
-      <button class="btn alt" id="printBtn">🖨 Басып шығару</button>
     </div>
     <input type="file" id="impFile" accept=".json,application/json" hidden>
-    <div class="row" style="margin-top:.6rem">
-      <button class="btn alt" id="clearVals">🧹 Мәндерді тазалау</button>
-      <button class="btn red" id="delAll">🗑 Барлығын өшіру</button>
-    </div>
-    <p class="note" style="margin-top:.7rem">Деректер осы құрылғыда (localStorage) сақталады, интернет қажет емес.</p>
+    <p class="note">Деректер осы құрылғыда (localStorage) сақталады, интернет қажет емес. Басқа ноутбукке көшіру үшін «JSON экспорт» жасап, сол жерде «JSON импорт» таңдаңыз.</p>
+  </div>
+  <div class="card set-danger"><h2>⚠ Қауіпті әрекеттер</h2>
+    <div class="danger-row"><div><b>Мәндерді тазалау</b><span>Кестедегі барлық сандар өшеді, күндер саны қалады.</span></div>
+      <button class="btn alt" id="clearVals">🧹 Тазалау</button></div>
+    <div class="danger-row"><div><b>Бастапқы күйге қайтару</b><span>Күнделік пен параметрлер әдепкі сандарға оралады.</span></div>
+      <button class="btn red" id="delAll">↩ Қайтару</button></div>
   </div>
 </div>
 </div>
@@ -441,12 +472,14 @@ html[data-theme] .summary>.sum-card:first-child .label,html[data-theme] .summary
 
 <script>
 (function(){
-var KEY='ecosort_v1',TKEY='ecosort_theme';
+var KEY='ecosort_v2',TKEY='ecosort_theme';
 var F=['organic','compost','water','reused','paper','total','mixed'];
 var LBL={organic:'Органика, кг',compost:'Компост, кг',water:'Жуу суы, литр',reused:'Қайта пайд. су, литр',paper:'Қағаз, кг',total:'Жалпы қалдық M₁ (сұрыптауға дейін), кг',mixed:'Аралас қоқыс M₂ (сұрыптаудан кейін), кг'};
 var $=function(id){return document.getElementById(id)};
 function blank(){var o={};F.forEach(function(k){o[k]=''});return o}
-function def(){var d=[];for(var i=0;i<5;i++)d.push(blank());return {days:d,price:45,coef:30,wcoef:0,N:0}}
+/* әдепкі 5 күндік өлшеу нәтижелері: [органика, компост, жуу суы, қайта пайд. су, қағаз, жалпы қалдық M1] */
+var SEED=[[3.2,1.27,9,5.46,4.1,7.3],[4,1.59,11,6.68,5.3,9.3],[3.5,1.4,12,7.29,4.6,8.1],[4.4,1.75,13,7.89,5.7,10.1],[3.5,1.39,11,6.68,4.8,8.3]];
+function def(){var d=SEED.map(function(r){var o=blank();['organic','compost','water','reused','paper','total'].forEach(function(k,i){o[k]=String(r[i])});return o});return {days:d,price:45,coef:30,wcoef:0,N:0}}
 function load(){try{var o=JSON.parse(localStorage.getItem(KEY));if(o&&Array.isArray(o.days)&&o.days.length){o.days=o.days.map(function(x){F.forEach(function(k){if(x[k]===undefined)x[k]=''});return x});var d=def();for(var k in d)if(o[k]===undefined)o[k]=d[k];return o}}catch(e){}return def()}
 var S=load();
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
@@ -580,7 +613,7 @@ $('impFile').onchange=function(e){
   rd.readAsText(f);
 };
 $('clearVals').onclick=function(){ask('Мәндерді тазалау','Кестедегі барлық сандар өшеді, күндер саны қалады.','Тазалау',function(){S.days=S.days.map(blank);save();build();toast('Мәндер тазаланды')},true)};
-$('delAll').onclick=function(){ask('Барлығын өшіру','Барлық деректер мен параметрлер бастапқы күйге қайтады.','Өшіру',function(){S=def();try{localStorage.removeItem(KEY)}catch(e){}save();$('price').value=S.price;$('coef').value=S.coef;$('wcoef').value=S.wcoef;$('nn').value=S.N;build();toast('Барлық деректер өшірілді')},true)};
+$('delAll').onclick=function(){ask('Бастапқы күйге қайтару','Барлық деректер мен параметрлер бастапқы күйге қайтады.','Қайтару',function(){S=def();try{localStorage.removeItem(KEY)}catch(e){}save();$('price').value=S.price;$('coef').value=S.coef;$('wcoef').value=S.wcoef;$('nn').value=S.N;build();toast('Бастапқы деректер қайтарылды')},true)};
 
 $('printBtn').onclick=function(){window.print()};
 document.addEventListener('keydown',function(e){
